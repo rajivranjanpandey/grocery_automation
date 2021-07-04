@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer');
 
-const main = async () => {
+const main = async (userInput) => {
     try {
-        const browser = await puppeteer.launch({ headless: false });
+        const browser = await puppeteer.launch();
         const context = browser.defaultBrowserContext();
         context.overridePermissions('https://jiomart.com', ['geolocation']);
 
@@ -39,13 +39,13 @@ const main = async () => {
         await page.$eval('#rel_pincode', el => el.value = '700019');
         await Promise.all([page.waitForNavigation(), page.$eval('.apply_btn', el => el.click())]);
 
-        const itemsArr = ['sunflower', 'sauce', 'mustard', 'atta'];
+        const itemsArr = [userInput];
         const obj = {};
         for (item of itemsArr) {
             const specArr = await productFetch(item, page);
             obj[item] = specArr;
         }
-        console.log(obj);
+        return obj;
 
 
     } catch (e) {
@@ -77,4 +77,4 @@ async function productFetch(productName, page) {
         return []
     }
 }
-main();
+module.exports = main;

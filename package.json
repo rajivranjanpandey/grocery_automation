@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node jiomart.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fastify": "^3.18.1",
+    "fastify-formbody": "^5.0.0",
+    "fastify-pug": "^2.0.0",
     "puppeteer": "^9.1.1"
   }
 }

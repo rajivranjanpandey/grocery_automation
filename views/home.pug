@@ -1,0 +1,11 @@
+doctype html
+html(lang="en")
+  head
+    title Grocery Automation
+  body
+    h2 Enter product name
+    #container.col 
+        form(action="/search", method="POST")
+          | productname: 
+          input(type="text", name="productname")
+          input(type="submit", value="Search")
