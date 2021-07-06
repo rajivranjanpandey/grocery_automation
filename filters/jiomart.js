@@ -66,6 +66,7 @@ async function productFetch(productName, page) {
                 const priceArr = [...x.getElementsByClassName('price-box')[0].children].map(x => x.innerText);
                 const obj = {
                     name: x.getElementsByClassName('clsgetname')[0].innerText,
+                    image: x.getElementsByClassName('product-image-photo')[0].src,
                     mrp: priceArr[1],
                     sp: priceArr[0]
                 }

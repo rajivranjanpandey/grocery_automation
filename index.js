@@ -11,7 +11,7 @@ app.get('/', (request, reply) => {
 });
 app.post('/search', async (request, reply) => {
     const searchRes = await searchFilter(request.body.productname);
-    reply.send(searchRes);
+    reply.render('search-result.pug', { searchRes });
 })
 app.listen(3000, (err, address) => {
     console.log(err, address)

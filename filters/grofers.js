@@ -89,6 +89,7 @@ async function productFetch(productName, page) {
                 const priceArr = x.getElementsByClassName('relative')[0].innerText.split('\n');
                 const obj = {
                     name: x.getElementsByClassName('plp-product__name')[0].innerText,
+                    image: x.getElementsByClassName('plp-product__img')[0].getElementsByTagName('img')[0].currentSrc,
                     mrp: priceArr[1],
                     sp: priceArr[0],
                     quantity: x.getElementsByClassName('plp-product__quantity')[0].innerText
