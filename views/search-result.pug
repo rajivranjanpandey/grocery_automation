@@ -2,8 +2,16 @@ doctype html
 html(lang="en")
   head
     title Grocery Automation
+    link(rel="stylesheet", href="/assets/index.css",type="text/css")
   body
-    h1
-     ul 
-      each val in searchRes.grofers 
-       li= val.name
+    div.result-container
+      each platform in Object.keys(searchRes)
+        div.platform-container
+          h3=platform
+          ul.product-list 
+            each val in searchRes[platform] 
+              li.product-item-cont
+                div.product-item 
+                  img(src=val.image, alt=val.name)
+                  p= val.name
+                  span= val.sp

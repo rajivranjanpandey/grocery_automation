@@ -1,0 +1,39 @@
+h2{
+    color:darkmagenta;
+}
+.result-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+}
+.platform-container{
+    outline: 2px solid darkgrey;
+    padding:10px;
+}
+.platform-container h3{
+    text-align: center;
+    font-family: monospace;
+    font-size: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid grey;
+}
+.platform-container .product-list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+.product-item{
+    border: 1px solid black;
+    border-right: 10px;
+    background-color: darkgrey;
+    margin-right: 5px;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+.product-item img{
+    height: 200px;
+    width: 200px;
+}
+.product-item p{
+    font-weight: bold;
+}
