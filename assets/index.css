@@ -22,6 +22,10 @@ h2{
     display: flex;
     flex-wrap: wrap;
 }
+.product-item-cont{
+    margin-bottom: 25px;
+    display: inline-flex;
+}
 .product-item{
     border: 1px solid black;
     border-right: 10px;
@@ -29,6 +33,7 @@ h2{
     margin-right: 5px;
     max-width: 200px;
     word-wrap: break-word;
+    padding:5px;
 }
 .product-item img{
     height: 200px;
@@ -36,4 +41,9 @@ h2{
 }
 .product-item p{
     font-weight: bold;
+    font-size:13px;
+}
+.product-item span{
+    font-weight: bold;
+    color: darkred;
 }

@@ -19,6 +19,7 @@ app.post('/search', async (request, reply) => {
     const productname = request.body.productname;
     const filterRes = await searchFilter(productname);
     const searchRes = { grofers: filterRes.grofers[productname], jioMart: filterRes.jioMart[productname] };
+    console.log(searchRes);
     // console.log(JSON.stringify(searchRes));
     reply
         .code(200)

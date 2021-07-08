@@ -49,6 +49,7 @@ const main = async (userInput) => {
             const specArr = await productFetch(item, page);
             obj[item] = specArr;
         }
+        console.log(obj);
         return obj;
 
         // we can also use $$ to get array of element handle and then run $eval on each element handle to fetch relative info (puppeter way)
@@ -97,7 +98,7 @@ async function productFetch(productName, page) {
                 return obj;
             })
         });
-        // console.log(x);
+        console.log(x);
         return x;
     } catch (e) {
         return [];

@@ -7,7 +7,7 @@ html(lang="en")
     div.result-container
       each platform in Object.keys(searchRes)
         div.platform-container
-          h3=platform
+          h3=platform.toUpperCase()
           ul.product-list 
             each val in searchRes[platform] 
               li.product-item-cont

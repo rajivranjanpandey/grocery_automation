@@ -4,9 +4,10 @@ html(lang="en")
     title Grocery Automation
     link(rel="stylesheet", href="/assets/index.css")
   body
-    h2 Enter product name
-    #container.col 
-        form(action="/search", method="POST")
-          | productname: 
-          input(type="text", name="productname")
-          input(type="submit", value="Search")
+    div
+      h2 Enter product name
+      #container.col 
+          form(action="/search", method="POST")
+            | productname: 
+            input(type="text", name="productname")
+            input(type="submit", value="Search")
