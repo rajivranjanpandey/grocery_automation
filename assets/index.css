@@ -1,15 +1,68 @@
-h2{
-    color:darkmagenta;
+:root{
+    --highlight-color:#dd610a;
+    --container-background: rgb(168 167 167 / 10%);
+    --text-color:#cdc9c9;
+}
+body{
+    background-color: #030303f7;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.product-container{
+    padding: 0em 5em 2em;
+    border:1px solid rgb(50, 50, 50);
+    border-radius: 18px;
+    box-shadow: 1px 1px 4px #dd610a;
+    background: var(--container-background);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+h3{
+    color: #dd610a;
+    letter-spacing: 0.25px;
+    margin-bottom: 25px;
+}
+.form-container{
+    border-bottom: 1px solid #706a6a;   
+}
+.form-container input[type="text"]{
+    background: transparent;
+    padding: 5px 5px;
+    width: 200px;
+    border: none;
+    color: var(--text-color);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+.form-container input[type="text"]:focus-visible{
+    border:none !important;
+    outline: none;
+}
+.form-container input[type="submit"]{
+    background: transparent;
+    border: none;
+    color: #706a6a;
+    letter-spacing: 0.25px;
+    cursor: pointer;
 }
 .result-container{
     display: grid;
     grid-template-columns: 50% 50%;
     grid-gap: 10px;
+    margin:10px;
+    margin-right: 21px;
 }
 .platform-container{
-    outline: 2px solid darkgrey;
-    padding:10px;
+    padding:0 !important;
 }
+
 .platform-container h3{
     text-align: center;
     font-family: monospace;
@@ -28,16 +81,18 @@ h2{
 }
 .product-item{
     border: 1px solid black;
-    border-right: 10px;
-    background-color: darkgrey;
+    border-radius: 15px;
+    background:var(--container-background);
     margin-right: 5px;
     max-width: 200px;
     word-wrap: break-word;
     padding:5px;
+    color:var(--text-color)
 }
 .product-item img{
     height: 200px;
     width: 200px;
+    border-radius: 15px;
 }
 .product-item p{
     font-weight: bold;
@@ -45,5 +100,5 @@ h2{
 }
 .product-item span{
     font-weight: bold;
-    color: darkred;
+    color: #ff6d07;
 }

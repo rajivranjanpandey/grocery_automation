@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 const main = async (userInput) => {
     try {
-
+        // { headless: false }
         // browser instance with override the geolocation permission.
         const browser = await puppeteer.launch();
         const context = browser.defaultBrowserContext();
@@ -84,13 +84,19 @@ async function productFetch(productName, page) {
 
         // wait for the products to plot.
         await page.waitForSelector('.plp-product');
+        await page.waitForTimeout(2000);
+        await page.waitForSelector('.plp-product');
+
+        console.log('products plotted');
         // once products are plotted evaluate each product and fetch relative info.
         const x = await page.$$eval('.plp-product', elArr => {
             return elArr.map(x => {
                 const priceArr = x.getElementsByClassName('relative')[0].innerText.split('\n');
+                const parentHref = x.parentElement.href;
+                const productId = parentHref.substr(parentHref.lastIndexOf('/') + 1);
                 const obj = {
                     name: x.getElementsByClassName('plp-product__name')[0].innerText,
-                    image: x.getElementsByClassName('plp-product__img')[0].getElementsByTagName('img')[0].currentSrc,
+                    image: `https://cdn.grofers.com/app/images/products/normal/pro_${productId}.jpg`,//x.getElementsByClassName('plp-product__img')[0].getElementsByTagName('img')[0].currentSrc,:: doesnt work since some images are lazy loaded.
                     mrp: priceArr[1],
                     sp: priceArr[0],
                     quantity: x.getElementsByClassName('plp-product__quantity')[0].innerText
@@ -101,7 +107,9 @@ async function productFetch(productName, page) {
         console.log(x);
         return x;
     } catch (e) {
+        console.log('e::', e);
         return [];
     }
 }
+// main('fortune');
 module.exports = main;

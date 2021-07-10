@@ -6,12 +6,12 @@ html(lang="en")
   body
     div.result-container
       each platform in Object.keys(searchRes)
-        div.platform-container
+        div.platform-container.product-container
           h3=platform.toUpperCase()
           ul.product-list 
             each val in searchRes[platform] 
               li.product-item-cont
                 div.product-item 
-                  img(src=val.image, alt=val.name)
+                  img(src=val.image, alt=val.name,loading='lazy')
                   p= val.name
                   span= val.sp
