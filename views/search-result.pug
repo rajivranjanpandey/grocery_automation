@@ -3,6 +3,9 @@ html(lang="en")
   head
     title Grocery Automation
     link(rel="stylesheet", href="/assets/index.css",type="text/css")
+    script(type='text/javascript')
+      const addItem =  function(item){console.log(item)}
+      
   body
     div.result-container
       each platform in Object.keys(searchRes)
@@ -14,4 +17,6 @@ html(lang="en")
                 div.product-item 
                   img(src=val.image, alt=val.name,loading='lazy')
                   p= val.name
-                  span= val.sp
+                  div.btn-add
+                    span= val.sp
+                    button(type="button",value='Add',click=`addItem(${val})`) Add

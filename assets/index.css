@@ -102,3 +102,7 @@ h3{
     font-weight: bold;
     color: #ff6d07;
 }
+.btn-add{
+    display: flex;
+    justify-content: space-between;
+}
