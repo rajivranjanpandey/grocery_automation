@@ -25,7 +25,7 @@ body{
     backdrop-filter: blur(10px);
 }
 h3{
-    color: #dd610a;
+    color:var(--highlight-color);
     letter-spacing: 0.25px;
     margin-bottom: 25px;
 }
@@ -102,7 +102,21 @@ h3{
     font-weight: bold;
     color: #ff6d07;
 }
-.btn-add{
+.price-add{
     display: flex;
     justify-content: space-between;
+}
+.add-btn{
+    border: 2px solid var(--highlight-color);
+    border-radius: 5px;
+    padding: 3px 10px;
+    background-color: transparent;
+    color: white;
+    letter-spacing: 0.75px;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+}
+.add-btn:hover{
+    background-color: var(--highlight-color);
 }

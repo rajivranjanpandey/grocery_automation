@@ -3,8 +3,8 @@ html(lang="en")
   head
     title Grocery Automation
     link(rel="stylesheet", href="/assets/index.css",type="text/css")
-    script(type='text/javascript')
-      const addItem =  function(item){console.log(item)}
+    script.
+      function addItem(item){console.log(item)}
       
   body
     div.result-container
@@ -17,6 +17,6 @@ html(lang="en")
                 div.product-item 
                   img(src=val.image, alt=val.name,loading='lazy')
                   p= val.name
-                  div.btn-add
+                  div.price-add
                     span= val.sp
-                    button(type="button",value='Add',click=`addItem(${val})`) Add
+                    button(type="button",class='add-btn',value='Add',onclick=`addItem(${JSON.stringify(val)})`) Add
