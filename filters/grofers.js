@@ -99,7 +99,9 @@ async function productFetch(productName, page) {
                     image: `https://cdn.grofers.com/app/images/products/normal/pro_${productId}.jpg`,//x.getElementsByClassName('plp-product__img')[0].getElementsByTagName('img')[0].currentSrc,:: doesnt work since some images are lazy loaded.
                     mrp: priceArr[1],
                     sp: priceArr[0],
-                    quantity: x.getElementsByClassName('plp-product__quantity')[0].innerText
+                    quantity: x.getElementsByClassName('plp-product__quantity')[0].innerText,
+                    parentHref,
+                    productId
                 };
                 return obj;
             })

@@ -4,7 +4,16 @@ html(lang="en")
     title Grocery Automation
     link(rel="stylesheet", href="/assets/index.css",type="text/css")
     script.
-      function addItem(item){console.log(item)}
+      async function addItem(platform,item){
+        console.log(item,typeof item);
+        const res = await fetch('/add',
+          {
+            method:'POST',
+            header:{"Content-Type":'application/json'},
+            body:JSON.stringify({platform,item})
+          });
+        console.log(res);
+      }
       
   body
     div.result-container
@@ -16,7 +25,7 @@ html(lang="en")
               li.product-item-cont
                 div.product-item 
                   img(src=val.image, alt=val.name,loading='lazy')
-                  p= val.name
+                  p= `${val.name} ${val.quantity||''}`
                   div.price-add
                     span= val.sp
-                    button(type="button",class='add-btn',value='Add',onclick=`addItem(${JSON.stringify(val)})`) Add
+                    button(type="button",class='add-btn',value='Add',onclick=`addItem(${JSON.stringify(platform)},${JSON.stringify(val)})`) Add

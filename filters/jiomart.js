@@ -63,12 +63,16 @@ async function productFetch(productName, page) {
         await page.waitForSelector('.cat-item');
         const arr = await page.$$eval('.cat-item', elArr => {
             return elArr.map(x => {
+                const parentHref = x.getElementsByClassName('category_name')[0].href;
+                const productId = parentHref.substr(parentHref.lastIndexOf('/') + 1);
                 const priceArr = [...x.getElementsByClassName('price-box')[0].children].map(x => x.innerText);
                 const obj = {
                     name: x.getElementsByClassName('clsgetname')[0].innerText,
                     image: x.getElementsByClassName('product-image-photo')[0].src,
                     mrp: priceArr[1],
-                    sp: priceArr[0]
+                    sp: priceArr[0],
+                    parentHref,
+                    productId
                 }
                 return obj;
             })
