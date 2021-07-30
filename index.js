@@ -9,7 +9,7 @@ const filePath = 'cart.json'
 const app = fastify({ logger: true });
 app.register(require('fastify-pug'), { views: 'views' });
 app.register(fastifyFormBody);
-app.register(require('fastify-static'), { root: path.join(__dirname, './', 'assets') });
+app.register(require('fastify-static'), { root: path.join(__dirname, './') });
 
 
 app.get('/', (request, reply) => {
@@ -17,8 +17,11 @@ app.get('/', (request, reply) => {
 });
 
 app.get('/assets/index.css', (request, reply) => {
-    return reply.sendFile('index.css');
-})
+    return reply.sendFile('assets/index.css');
+});
+app.get('/cart-file', (request, reply) => {
+    return reply.sendFile(filePath);
+});
 app.post('/search', async (request, reply) => {
     const productname = request.body.productname;
     const filterRes = await searchFilter(productname);
@@ -64,20 +67,13 @@ app.post('/add', async (request, reply) => {
                 return reply.code(500).send(e);
             }
         });
-        // console.log(JSON.stringify(res));
-        // if (fs.existsSync(filePath)) {
-        //     const fileDt = await fs.readFile('cart.json');
-        //     console.log(JSON.parse(fileDt));
-        // } else {
-        //     
-        // }
-
     } catch (e) {
         return reply
             .code(500)
             .send(e);
     }
-})
+});
+
 
 
 app.listen(3000, (err, address) => {

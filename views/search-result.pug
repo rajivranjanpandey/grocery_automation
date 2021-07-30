@@ -23,8 +23,21 @@ html(lang="en")
           }
         }catch(e){}
       }
+      async function downloadFile(){
+        const res = await fetch('/cart-file',{
+          method:'GET'
+        });
+        const stream = new Response(res.body);
+        const file = await stream.blob();
+        var a = document.createElement("a");
+        //- var file = new Blob([res.body], {type: 'text/plain'});
+        a.href = URL.createObjectURL(file);
+        a.download = 'checklist.txt';
+        a.click();
+      }
       
   body
+    button(type="button",class='add-btn',onclick=`downloadFile()`) Download
     div.result-container
       each platform in Object.keys(searchRes)
         div.platform-container.product-container
