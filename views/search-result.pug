@@ -6,13 +6,22 @@ html(lang="en")
     script.
       async function addItem(platform,item){
         console.log(item,typeof item);
+        try{
         const res = await fetch('/add',
           {
             method:'POST',
             header:{"Content-Type":'application/json'},
             body:JSON.stringify({platform,item})
           });
-        console.log(res);
+          console.log({res});
+          if(res){
+            const doc = document.getElementById(item.productId);
+              if(doc){
+                doc.innerHTML = 'Added';
+                doc.classList.add('added');
+            }
+          }
+        }catch(e){}
       }
       
   body
@@ -28,4 +37,4 @@ html(lang="en")
                   p= `${val.name} ${val.quantity||''}`
                   div.price-add
                     span= val.sp
-                    button(type="button",class='add-btn',value='Add',onclick=`addItem(${JSON.stringify(platform)},${JSON.stringify(val)})`) Add
+                    button(type="button",id=`${val.productId}`,class='add-btn',value='Add',onclick=`addItem(${JSON.stringify(platform)},${JSON.stringify(val)})`) Add

@@ -41,7 +41,11 @@ app.post('/add', async (request, reply) => {
                     console.log(writeObj)
                 } else {
                     let fileDt = await fs.promises.readFile('cart.json');
-                    fileDt = JSON.parse(fileDt);
+                    try {
+                        fileDt = JSON.parse(fileDt);
+                    } catch (e) {
+                        fileDt = {};
+                    }
                     const platformDt = fileDt[addReq.platform];
                     if (platformDt) {
                         if (!platformDt[addReq.item.productId])

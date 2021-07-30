@@ -117,6 +117,9 @@ h3{
     font-family: inherit;
     cursor: pointer;
 }
+.add-btn.added{
+    background-color: var(--highlight-color);
+}
 .add-btn:hover{
     background-color: var(--highlight-color);
 }
