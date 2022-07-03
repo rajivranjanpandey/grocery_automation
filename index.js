@@ -76,6 +76,6 @@ app.post('/add', async (request, reply) => {
 
 
 
-app.listen(3000, (err, address) => {
-    console.log(err, address)
+app.listen(3000, '0.0.0.0', (err, address) => {
+    console.log(err, address, process.env.FASTIFY_ADDRESS)
 })
